@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+@import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  color: inherit;
+  text-decoration: none;
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    /* background-color: black; */
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+nav .logo {
+    z-index: 2;
+}
+
+nav .logo h1 {
+  display: flex;
+  align-items: center;
+  font-size: 38px;
+  font-family: 'Poller One', cursive;
+  padding: 20px;
+  font-weight: 900;
+  color: white;
+}
+
+nav .logo span {
+  font-size: 50px;
+}
+
+nav .blur_container {
+  position: absolute;
+  top: -150px;
+  display: flex;
+  gap: 20px;
+  filter: blur(50px);
+  z-index: -1;
+}
+
+nav .blur_container div {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  filter: blur(70px);
+}
+
+nav .blur_container div:nth-child(1){
+    background-color: rgb(161, 220, 244);
+}
+
+nav .blur_container div:nth-child(2){
+    background-color: rgb(238, 151, 168);
+}
+.search_box_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+    position: sticky;
+    top: 20px;
+}
+
+.search_box_container .search_box{
+    display: flex;
+    align-items: center;
+    width: 500px;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(1, 1, 1, 0.146);
+    border-radius: 8px;
+    padding:0px 10px;
+    height: 55px;
+}
+
+.search_box_container .search_box span{
+    font-size: 30px;
+    color: gray;
+}
+
+.search_box_container .search_box input{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.card_container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    width: 90%;
+    margin: 0px auto;
+    margin-top: 70px;
+    gap: 20px;
+    padding-bottom: 20px;
+    /* background-color: white; */
+}
+
+.card_container .card{
+    height: 100%;
+    border-radius: 10px;
+}
+
+.card_container .card img{
+    border-radius: 10px;
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+}
+
+.card_container .card h3{
+    margin-top: 10px;
+}
+
+.card_container .loader_card{
+    height: 220px;
+    /* background-color: whitesmoke; */
+    border-radius: 10px;
+}
+
+.card_container .loader_card .image{
+    background-color: rgb(243, 243, 243);
+    border-radius: 10px;
+    width: 100%;
+    height: 140px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card_container .loader_card .image::before, 
+.card_container .loader_card .details_container .title::before,
+.card_container .loader_card .details_container .text::before{
+    content: " ";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(246, 246, 246);
+    filter: blur(1px);
+    animation: loader_animate 0.8s linear infinite;
+}
+
+@keyframes loader_animate {
+    to{
+        transform: translate(100%);
+    }
+}
+
+.card_container .loader_card .details_container{
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+.card_container .loader_card .details_container .title{
+    width: 50%;
+    height: 30px;
+    background-color: rgb(243, 243, 243);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.card_container .loader_card .details_container .text{
+    width: 100%;
+    height: 30px;
+    background-color: rgb(243, 243, 243);
+    border-radius: 5px;
+    margin-top: 8px;
+    position: relative;
+    overflow: hidden;
+}
