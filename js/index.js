@@ -64,8 +64,9 @@ const modalUI = ({ name, height, gender }) => {
 const updatePageContent = (resourceLength, pageCount) => {
     let marker = resourceLength / pageCount + "";
     marker = marker.split(".")
-    maxPage = marker+1
     marker = marker[1] !== undefined ? parseInt(marker[0]) + 1 : parseInt(marker[0])
+    maxPage = marker
+
     let HtmlContent;    
     for (let i = 1; i < marker + 1; i++) {
         HtmlContent  += `<button>${i}</button>`
@@ -74,6 +75,7 @@ const updatePageContent = (resourceLength, pageCount) => {
 }
 
 const disablePaginationNavigationButton = () =>{
+    console.log(maxPage)
     paginationIndex == 1 ? paginationPrev.disabled=true : paginationPrev.disabled=false
     paginationIndex == maxPage ? paginationNext.disabled=true : paginationNext.disabled=false
 }
