@@ -197,7 +197,7 @@ nav .blur_container div:nth-child(2){
 .modal{
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.199);
+    background-color: rgba(0, 0, 0, 0.36);
     position: fixed;
     top: 0;
     left: 0;
@@ -231,6 +231,36 @@ nav .blur_container div:nth-child(2){
     margin-bottom: 20px;
 }
 
+.pagination_container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 30px;
+    margin-bottom: 20px;
+    gap: 5px;
+}
+
+.pagination_container button{
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.pagination_container button span{
+    font-size: 13px;
+}
+
+.pagination_container .active{
+    background-color: royalblue;
+    color: white;
+}
+
+
 .dark{
     background-color: black;
     color: white;
@@ -262,13 +292,13 @@ nav .blur_container div:nth-child(2){
 }
 
 .dark .card_container .loader_card .image,
-.card_container .loader_card .details_container .title,
-.card_container .loader_card .details_container .text{
+.dark .card_container .loader_card .details_container .title,
+.dark .card_container .loader_card .details_container .text{
     background-color: rgb(49, 49, 49);
 }
 
-.card_container .loader_card .image::before, 
-.card_container .loader_card .details_container .title::before,
-.card_container .loader_card .details_container .text::before{
+.dark .card_container .loader_card .image::before, 
+.dark .card_container .loader_card .details_container .title::before,
+.dark .card_container .loader_card .details_container .text::before{
     background: linear-gradient(90deg,rgb(49, 49, 49), black);
 }
