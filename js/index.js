@@ -1,13 +1,16 @@
 const cardContainer = document.querySelector(".card_container");
 const searchInput = document.querySelector(".search-box")
 const modal = document.querySelector(".modal")
-const paginationContainer = document.querySelector(".pagination_container")
 const paginationContent = document.querySelector(".pagination_content")
+const paginationPrev = document.querySelector(".prev")
+const paginationNext = document.querySelector(".next")
+
 
 
 let starWarzData = [];
 let filteredStarWarzData = []
 let paginationIndex = 1;
+let maxPage;
 
 const cardUILoader = () => {
     for (let i = 1; i < 9; i++) {
@@ -26,6 +29,8 @@ const updateSearch = (value = "") => {
         .filter(data => data.name.toLowerCase().includes(value.toLowerCase().trim()))
     filteredStarWarzData.map(({ name, gender }, i) => cardUI(name, gender, i))
 }
+
+
 
 
 
@@ -56,22 +61,36 @@ const modalUI = ({ name, height, gender }) => {
 </div>`
 }
 
-const updatePageContent = (resourceLength, pageCount) =>{
-    let  marker = resourceLength / pageCount+"" ;
+const updatePageContent = (resourceLength, pageCount) => {
+    let marker = resourceLength / pageCount + "";
     marker = marker.split(".")
+    maxPage = marker+1
     marker = marker[1] !== undefined ? parseInt(marker[0]) + 1 : parseInt(marker[0])
-    for (let i = 1; i < marker+1; i++) {
-        paginationContent.innerHTML +=`<button>${i}</button>`
+    let HtmlContent;    
+    for (let i = 1; i < marker + 1; i++) {
+        HtmlContent  += `<button>${i}</button>`
     }
+    paginationContent.innerHTML = HtmlContent.replace("undefined",".");
 }
 
+const disablePaginationNavigationButton = () =>{
+    paginationIndex == 1 ? paginationPrev.disabled=true : paginationPrev.disabled=false
+    paginationIndex == maxPage ? paginationNext.disabled=true : paginationNext.disabled=false
+}
+
+
+const updatePaginationIndicator = () => {
+    paginationContent.childNodes.forEach(indicator => indicator.className = "")
+    paginationContent.childNodes[paginationIndex].className = "active"
+}
 
 const fetchData = (pageNumber) => {
     fetch(`https://swapi.dev/api/people?page=${pageNumber}`, { method: "GET", headers: { "Content-Type": "application / json", }, })
         .then((res) => res.json())
         .then((data) => {
-            console.log(data)
             updatePageContent(data.count, 10)
+            updatePaginationIndicator()
+            disablePaginationNavigationButton()
             starWarzData = data.results;
             updateSearch("")
             cardContainer.innerHTML = ""
@@ -91,9 +110,26 @@ cardContainer.addEventListener("click", (e) => {
     const characterIndex = e.target.role;
     if (!isNaN(characterIndex)) modal.style.display = "flex"
     const character = filteredStarWarzData[characterIndex];
-    console.log(character)
     modalUI({ ...character })
 })
+
+paginationContent.addEventListener("click", (e)=>{
+    paginationIndex = parseInt(e.target.textContent)
+    fetchData(paginationIndex)
+})
+
+
+paginationPrev.addEventListener("click",()=>{        
+    --paginationIndex
+    fetchData(paginationIndex);
+})
+
+paginationNext.addEventListener("click",()=>{        
+    ++paginationIndex
+    fetchData(paginationIndex);
+})
+
+
 
 modal.addEventListener("click", (e) => (e.target.className.includes("close_icon") || e.target.className === "modal") ? modal.style.display = "none" : null)
 
