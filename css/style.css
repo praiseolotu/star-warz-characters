@@ -18,7 +18,7 @@
 body{
     width: 100%;
     height: 100%;
-    /* background-color: #000000; */
+    background-color: whitesmoke;
 }
 
 nav {
@@ -63,11 +63,11 @@ nav .blur_container div {
 }
 
 nav .blur_container div:nth-child(1){
-    background-color: rgb(161, 220, 244);
+    background-color: rgb(97, 210, 255);
 }
 
 nav .blur_container div:nth-child(2){
-    background-color: rgb(238, 151, 168);
+    background-color: rgb(255, 107, 137);
 }
 .search_box_container{
     width: 100%;
@@ -119,6 +119,9 @@ nav .blur_container div:nth-child(2){
 .card_container .card{
     height: 100%;
     border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0px 0px 3px rgba(1, 1, 1, 0.146);
+    background-color: white;
 }
 
 .card_container .card img{
@@ -126,6 +129,7 @@ nav .blur_container div:nth-child(2){
     width: 100%;
     height: 170px;
     object-fit: cover;
+    margin-bottom: 10px;
 }
 
 .card_container .card h3{
@@ -135,12 +139,11 @@ nav .blur_container div:nth-child(2){
 
 .card_container .loader_card{
     height: 220px;
-    /* background-color: whitesmoke; */
     border-radius: 10px;
 }
 
 .card_container .loader_card .image{
-    background-color: rgb(243, 243, 243);
+    background-color: white;
     border-radius: 10px;
     width: 100%;
     height: 140px;
@@ -155,9 +158,9 @@ nav .blur_container div:nth-child(2){
     position: absolute;
     height: 100%;
     width: 100%;
-    background-color: rgb(246, 246, 246);
+    background: linear-gradient(90deg,white, rgb(237, 237, 237));
     filter: blur(1px);
-    animation: loader_animate 0.8s linear infinite;
+    animation: loader_animate 1.4s linear infinite;
 }
 
 @keyframes loader_animate {
@@ -175,7 +178,7 @@ nav .blur_container div:nth-child(2){
 .card_container .loader_card .details_container .title{
     width: 50%;
     height: 30px;
-    background-color: rgb(243, 243, 243);
+    background-color: white;
     border-radius: 5px;
     position: relative;
     overflow: hidden;
@@ -184,9 +187,88 @@ nav .blur_container div:nth-child(2){
 .card_container .loader_card .details_container .text{
     width: 100%;
     height: 30px;
-    background-color: rgb(243, 243, 243);
+    background-color: white;
     border-radius: 5px;
     margin-top: 8px;
     position: relative;
     overflow: hidden;
+}
+
+.modal{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.199);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+.modal .modal_content{
+    padding: 20px;
+    width: 100%;
+    max-width: 500px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.modal .modal_content img{
+    margin-bottom: 20px;
+}
+.modal .modal_content span{
+    position: absolute;
+}
+.modal .modal_content .details_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.dark{
+    background-color: black;
+    color: white;
+}
+
+.dark .card_container .card{
+    background-color: rgb(32, 32, 32);
+}
+
+.dark 
+.search_box_container .search_box{
+    background-color: rgb(49, 49, 49);
+}
+
+.dark .search_box_container .search_box span{
+    color: whitesmoke;
+}
+
+.dark .search_box_container .search_box input{
+    color: white;
+}
+
+.dark .modal{
+    background-color: rgba(0, 0, 0, 0.587);
+}
+
+.dark .modal .modal_content{
+    background-color: rgb(25, 25, 25);
+}
+
+.dark .card_container .loader_card .image,
+.card_container .loader_card .details_container .title,
+.card_container .loader_card .details_container .text{
+    background-color: rgb(49, 49, 49);
+}
+
+.card_container .loader_card .image::before, 
+.card_container .loader_card .details_container .title::before,
+.card_container .loader_card .details_container .text::before{
+    background: linear-gradient(90deg,rgb(49, 49, 49), black);
 }
