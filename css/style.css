@@ -76,6 +76,8 @@ nav .blur_container div:nth-child(2){
 }
 .search_box_container{
     width: 100%;
+    max-width: 100vw;
+    min-width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -126,6 +128,7 @@ nav .blur_container div:nth-child(2){
     padding-bottom: 20px;
     padding: 0px 30px;
     min-height: calc(100vh - 250px);
+    overflow: hidden;
 }
 
 .card_container .card{
