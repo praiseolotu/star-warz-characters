@@ -23,17 +23,6 @@ const cardUILoader = () => {
     }
 };
 
-const updateSearch = (value = "") => {
-    cardContainer.innerHTML = ""
-    filteredStarWarzData = starWarzData
-        .filter(data => data.name.toLowerCase().includes(value.toLowerCase().trim()))
-    filteredStarWarzData.map(({ name, gender }, i) => cardUI(name, gender, i))
-}
-
-
-
-
-
 const cardUI = (name, gender, i) => {
     cardContainer.innerHTML += `
         <div class="card" role="${i}">
@@ -43,9 +32,6 @@ const cardUI = (name, gender, i) => {
             </div>
         </div>`;
 };
-
-
-cardUILoader();
 
 const modalUI = ({ name, height, gender }) => {
     modal.innerHTML = `
@@ -61,23 +47,44 @@ const modalUI = ({ name, height, gender }) => {
 </div>`
 }
 
+const messageUI = (iconName, title) => {
+    cardContainer.innerHTML = `
+                <div class="error_container">
+                    <span class="material-symbols-outlined">
+                    ${iconName}
+                    </span>
+                    <h2>${title}</h2>
+                </div>
+            `
+}
+
+const updateSearch = (value = "") => {
+    cardContainer.innerHTML = ""
+    filteredStarWarzData = starWarzData
+        .filter(data => data.name.toLowerCase().includes(value.toLowerCase().trim()))
+    filteredStarWarzData.map(({ name, gender }, i) => cardUI(name, gender, i))
+}
+
+cardUILoader();
+
+
+
 const updatePageContent = (resourceLength, pageCount) => {
     let marker = resourceLength / pageCount + "";
     marker = marker.split(".")
     marker = marker[1] !== undefined ? parseInt(marker[0]) + 1 : parseInt(marker[0])
     maxPage = marker
-
-    let HtmlContent;    
+    let HtmlContent;
     for (let i = 1; i < marker + 1; i++) {
-        HtmlContent  += `<button>${i}</button>`
+        HtmlContent += `<button>${i}</button>`
     }
-    paginationContent.innerHTML = HtmlContent.replace("undefined",".");
+    paginationContent.innerHTML = HtmlContent.replace("undefined", ".");
 }
 
-const disablePaginationNavigationButton = () =>{
+const disablePaginationNavigationButton = () => {
     console.log(maxPage)
-    paginationIndex == 1 ? paginationPrev.disabled=true : paginationPrev.disabled=false
-    paginationIndex == maxPage ? paginationNext.disabled=true : paginationNext.disabled=false
+    paginationIndex == 1 ? paginationPrev.disabled = true : paginationPrev.disabled = false
+    paginationIndex == maxPage ? paginationNext.disabled = true : paginationNext.disabled = false
 }
 
 
@@ -98,11 +105,16 @@ const fetchData = (pageNumber) => {
             cardContainer.innerHTML = ""
             filteredStarWarzData.map(({ name, gender }, i) =>
                 setTimeout(() => cardUI(name, gender, i), 1000))
-        });
+        }).catch(() => {
+            messageUI("wifi_off","An error occurred")
+            maxPage = 1;
+            disablePaginationNavigationButton()
+    })
 }
 
 searchInput.addEventListener("input", (e) => {
     updateSearch(e.target.value)
+    if (filteredStarWarzData.length === 0)  messageUI("search_off","No match");
 })
 
 fetchData(paginationIndex);
@@ -115,18 +127,18 @@ cardContainer.addEventListener("click", (e) => {
     modalUI({ ...character })
 })
 
-paginationContent.addEventListener("click", (e)=>{
+paginationContent.addEventListener("click", (e) => {
     paginationIndex = parseInt(e.target.textContent)
     fetchData(paginationIndex)
 })
 
 
-paginationPrev.addEventListener("click",()=>{        
+paginationPrev.addEventListener("click", () => {
     --paginationIndex
     fetchData(paginationIndex);
 })
 
-paginationNext.addEventListener("click",()=>{        
+paginationNext.addEventListener("click", () => {
     ++paginationIndex
     fetchData(paginationIndex);
 })

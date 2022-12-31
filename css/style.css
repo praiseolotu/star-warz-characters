@@ -255,6 +255,10 @@ nav .blur_container div:nth-child(2){
     font-size: 13px;
 }
 
+.pagination_container button:disabled{
+    cursor: not-allowed;
+}
+
 .pagination_container .active{
     background-color: royalblue;
     color: white;
@@ -301,4 +305,13 @@ nav .blur_container div:nth-child(2){
 .dark .card_container .loader_card .details_container .title::before,
 .dark .card_container .loader_card .details_container .text::before{
     background: linear-gradient(90deg,rgb(49, 49, 49), black);
+}
+
+.error_container{
+    text-align: center;
+    width: calc(100vw - 100px);
+}
+
+.error_container span{
+    font-size: 50px;
 }
