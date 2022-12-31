@@ -40,7 +40,9 @@ nav .logo h1 {
   font-family: 'Poller One', cursive;
   padding: 20px;
   font-weight: 900;
-  color: white;
+  color: transparent;
+  background:linear-gradient(45deg, slateblue, skyblue);
+  -webkit-background-clip: text;
 }
 
 nav .logo span {
@@ -61,10 +63,12 @@ nav .blur_container {
 }
 
 nav .blur_container div {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  filter: blur(70px);
+    max-width: 250px;
+    width: 50%;
+    height: 250px;
+    border-radius: 50%;
+    filter: blur(70px);
+    display: none;
 }
 
 nav .blur_container div:nth-child(1){
