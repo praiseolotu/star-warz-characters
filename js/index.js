@@ -65,7 +65,6 @@ const updateSearch = (value = "") => {
     filteredStarWarzData.map(({ name, gender }, i) => cardUI(name, gender, i))
 }
 
-cardUILoader();
 
 
 
@@ -103,14 +102,14 @@ const fetchData = (pageNumber) => {
             starWarzData = data.results;
             updateSearch("")
             cardContainer.innerHTML = ""
-            filteredStarWarzData.map(({ name, gender }, i) =>
-                setTimeout(() => cardUI(name, gender, i), 1000))
+            filteredStarWarzData.map(({ name, gender }, i) => cardUI(name, gender, i))
         }).catch(() => {
             messageUI("wifi_off","An error occurred")
-            maxPage = 1;
             disablePaginationNavigationButton()
+            maxPage = 1;
     })
 }
+cardUILoader();
 
 searchInput.addEventListener("input", (e) => {
     updateSearch(e.target.value)

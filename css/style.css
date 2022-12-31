@@ -53,6 +53,10 @@ nav .blur_container {
   gap: 20px;
   filter: blur(50px);
   z-index: -1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 nav .blur_container div {
@@ -77,12 +81,15 @@ nav .blur_container div:nth-child(2){
     z-index: 4;
     position: sticky;
     top: 20px;
+    padding: 0px 30px;
+    position: relative;
 }
 
 .search_box_container .search_box{
     display: flex;
     align-items: center;
-    width: 500px;
+    width:100% ;
+    max-width: 500px;
     background-color: white;
     box-shadow: 0px 0px 10px rgba(1, 1, 1, 0.146);
     border-radius: 8px;
@@ -108,12 +115,14 @@ nav .blur_container div:nth-child(2){
 .card_container{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    width: 90%;
+    width: 100%;
+    max-width: 1100px;
     margin: 0px auto;
     margin-top: 70px;
     gap: 20px;
     padding-bottom: 20px;
-    /* background-color: white; */
+    padding: 0px 30px;
+    min-height: calc(100vh - 250px);
 }
 
 .card_container .card{
@@ -122,13 +131,15 @@ nav .blur_container div:nth-child(2){
     padding: 10px;
     box-shadow: 0px 0px 3px rgba(1, 1, 1, 0.146);
     background-color: white;
+    max-height: 250px;
+    text-align: center;
 }
 
 .card_container .card img{
     border-radius: 10px;
     width: 100%;
     height: 170px;
-    object-fit: cover;
+    object-fit: contain;
     margin-bottom: 10px;
 }
 
@@ -264,6 +275,11 @@ nav .blur_container div:nth-child(2){
     color: white;
 }
 
+.pagination_content{
+    display: flex;
+    align-items: center;
+}
+
 
 .dark{
     background-color: black;
@@ -309,9 +325,64 @@ nav .blur_container div:nth-child(2){
 
 .error_container{
     text-align: center;
-    width: calc(100vw - 100px);
+    width: calc(100vw );
+    margin: 0px auto;
+    position: absolute;
+    height: 100%;
+    max-height: calc(100vh - 300px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    left: 0;
 }
 
 .error_container span{
     font-size: 50px;
+}
+
+@media screen and (max-width:991px) {
+    .card_container{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width:730px) {
+    nav .logo h1 {
+        font-size: 30px;
+    }
+    .card_container{
+        grid-template-columns: repeat(2, 1fr);
+       max-width: 550px;
+       gap: 10px;
+       margin-top: 30px;
+       padding: 0px 10px;
+
+    }
+    .card_container .card h3{
+        font-size: 15px;
+    }
+    .pagination_container{
+        justify-content: center;
+        padding: 10px 0px;
+        margin-top: 20px;
+    }
+
+    .search_box_container .search_box{
+        height: 40px;
+    }
+    .search_box_container .search_box span{
+        font-size: 20px;
+        color: gray;
+    }
+    .search_box_container .search_box input{
+        font-size: 14px;
+    }
+    .error_container span{
+        font-size: 35px;
+    }
+    .error_container h2{
+        font-size: 16px;
+    }
 }
