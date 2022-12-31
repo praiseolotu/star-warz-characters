@@ -39,9 +39,9 @@ const modalUI = ({ name, height, gender }) => {
     <span class="material-symbols-outlined close_icon">close</span>
     <img src="https://robohash.org/${name}" alt="">
     <div>
-      <div class="details_container"><h4>Name: </h4>${name}</div>
-      <div class="details_container"><h4>Gender: </h4>${gender}</div>
-      <div class="details_container"><h4>Height: </h4>${height}</div>
+      <div class="details_container"><h4>Name: </h4> ${name}</div>
+      <div class="details_container"><h4>Gender: </h4> ${gender}</div>
+      <div class="details_container"><h4>Height: </h4> ${height}</div>
     </div>
   </div>
 </div>`

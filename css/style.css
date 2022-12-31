@@ -220,6 +220,7 @@ nav .blur_container div:nth-child(2){
     align-items: center;
     justify-content: center;
     display: none;
+    padding: 0px 15px;
 }
 
 .modal .modal_content{
