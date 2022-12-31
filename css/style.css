@@ -67,11 +67,11 @@ nav .blur_container div {
 }
 
 nav .blur_container div:nth-child(1){
-    background-color: rgb(97, 210, 255);
+    background-color: rgb(21, 189, 255);
 }
 
 nav .blur_container div:nth-child(2){
-    background-color: rgb(255, 107, 137);
+    background-color: rgb(255, 61, 100);
 }
 .search_box_container{
     width: 100%;
@@ -82,7 +82,7 @@ nav .blur_container div:nth-child(2){
     position: sticky;
     top: 20px;
     padding: 0px 30px;
-    position: relative;
+    /* position: relative; */
 }
 
 .search_box_container .search_box{
@@ -95,6 +95,7 @@ nav .blur_container div:nth-child(2){
     border-radius: 8px;
     padding:0px 10px;
     height: 55px;
+    
 }
 
 .search_box_container .search_box span{
