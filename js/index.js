@@ -93,6 +93,7 @@ const updatePaginationIndicator = () => {
 }
 
 const fetchData = (pageNumber) => {
+    window.scrollTo(0,0)
     fetch(`https://swapi.dev/api/people?page=${pageNumber}`, { method: "GET", headers: { "Content-Type": "application / json", }, })
         .then((res) => res.json())
         .then((data) => {
